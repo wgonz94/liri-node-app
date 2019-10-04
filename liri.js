@@ -25,7 +25,7 @@ switch(preset) {
     spotifySong(entry);    
     } 
     else{
-        spotifySong("The Sign");
+        spotifySong("Ace-of-Base");
     }
     break;
 
@@ -87,7 +87,7 @@ axios.get(queryURL).then(
 function spotifySong(entry){
 //// spotify-this-song
 
-spotify.search({ type: 'track', query: entry }, function(err, data) {
+spotify.search({ type: 'track', query: entry, limit: 1}, function(err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
@@ -100,6 +100,7 @@ spotify.search({ type: 'track', query: entry }, function(err, data) {
     console.log("Preview link: " + song.album.external_urls.spotify)
     //Album that the song is playing from
     console.log("Album: " + song.album.name)
+
 })
 }
 
