@@ -8,11 +8,25 @@ var spotify = new Spotify(keys.spotify);
 
 
 var axios = require("axios");
+var moment = require('moment');
 
 var fs = require('fs');
 
 const preset = process.argv[2];
-const entry = process.argv[3];
+var nodeArgs = process.argv;
+var entry = "";
+
+for (var i = 3; i < nodeArgs.length; i++) {
+
+    if (i > 3 && i < nodeArgs.length) {
+      entry = entry + "+" + nodeArgs[i];
+    } else {
+      entry += nodeArgs[i];
+  
+    }
+  }
+  
+
 
 switch(preset) {
     
@@ -46,19 +60,22 @@ switch(preset) {
         console.log('Invalid. Try again!');
 };
 
-function getBandInfo() {
+function getBandInfo(entry) {
 // concert-this
 
 let queryURL = "https://rest.bandsintown.com/artists/" + entry + "/events?app_id=codingbootcamp";
 
 axios.get(queryURL).then(
-    function(response) {
+    function(response) {   
         //name of Venue
         console.log("Venue name: " + response.data[0].venue.name)
         //location of venue
         console.log("Location of Venue: " + response.data[0].venue.country)
         //time of venue
-        console.log("Venue Time: " + response.data[0].datetime)
+        var time = response.data[0].datetime
+        var date = moment(time).format('MM/DD/YYYY')
+
+        console.log("Venue Time: " + date)
     }
 )
 .catch(function(error) {
