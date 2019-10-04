@@ -62,11 +62,11 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
     - Rotten Tomatoes Rating.
     - Rotten Tomatoes URL.
 
-    ![movie-this](images/movie-this.JPG)
+    ![movie-this](images/movie-this2.JPG)
 
     If the user doesn't type a movie in, the program will output data for the movie 'Mr.Nobody.'
 
-    ![movie-this default](images/movie-this-default.JPG)
+    ![movie-this default](images/movie-this-default2.JPG)
 
 
 * Step Four: node liri.js do-what-it-says
