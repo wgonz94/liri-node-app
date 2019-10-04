@@ -76,6 +76,6 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
     ![do-what-it-says](images/do-what-it-says.JPG)
 
 
-* Developer:
-    William Gonzales
+## Developer:
+ ### William Gonzales
 
