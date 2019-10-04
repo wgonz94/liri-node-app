@@ -6,6 +6,7 @@ const keys = require("./keys.js");
 
 var spotify = new Spotify(keys.spotify);
 
+
 var axios = require("axios");
 
 var fs = require('fs');
@@ -53,11 +54,11 @@ let queryURL = "https://rest.bandsintown.com/artists/" + entry + "/events?app_id
 axios.get(queryURL).then(
     function(response) {
         //name of Venue
-        console.log(response.data[0].venue.name)
+        console.log("Venue name: " + response.data[0].venue.name)
         //location of venue
-        console.log(response.data[0].venue.country)
+        console.log("Location of Venue: " + response.data[0].venue.country)
         //time of venue
-        console.log(response.data[0].datetime)
+        console.log("Venue Time: " + response.data[0].datetime)
     }
 )
 .catch(function(error) {
@@ -83,7 +84,7 @@ axios.get(queryURL).then(
 
 }
 
-function spotifySong(){
+function spotifySong(entry){
 //// spotify-this-song
 
 spotify.search({ type: 'track', query: entry }, function(err, data) {
@@ -91,26 +92,64 @@ spotify.search({ type: 'track', query: entry }, function(err, data) {
       return console.log('Error occurred: ' + err);
     }
     // artist's name
-    console.log(data.tracks.items[0].album.artists)
-    
+    let song = data.tracks.items[0]
+    console.log("Artist Name: " + song.artists[0].name)
     // the song's name
-    console.log(data.tracks.items[0].album.name)
+    console.log("Name of Song: " + song.name)
     // preview link of the song from Spotify
-    console.log(data.tracks.items[0].album.external_urls.spotify)
+    console.log("Preview link: " + song.album.external_urls.spotify)
     //Album that the song is playing from
-    console.log(data.tracks.items[0].album.external_urls.name)
-
-
-
+    console.log("Album: " + song.album.name)
 })
-
-
 }
 
-// Artist(s)
-// The song's name
-// A preview link of the song from Spotify
-// The album that the song is from
+function movieOMBD(entry){
+    //movie-this
+
+    var movieURL = "http://www.omdbapi.com/?t=" + entry + "&apikey=trilogy&y=&plot=short&tomatoes=true";
+
+    axios.get(movieURL).then(
+        function(response) {
+            var movie = response.data;
+            
+            //title of movie
+            console.log("\nTitle: " + movie.Title)
+            //Year of movie
+            console.log("Year: " + movie.Released)
+            //IMDB rating
+            console.log("IMDB Rating: " + movie.Ratings[0].Value)
+            //Rotten Tomatoes Rating
+            console.log("Rotten Tomatoes: " + movie.Ratings[1].Value)
+            //Country that movie was produced
+            console.log("Produced in: " + movie.Country)
+            //plot of the movie
+            console.log("Plot: " + movie.Plot)
+            //Actors in the movie
+            console.log("Actors: " + movie.Actors)
+        })
+    .catch(function(error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log("---------------Data---------------");
+          console.log(error.response.data);
+          console.log("---------------Status---------------");
+          console.log(error.response.status);
+          console.log("---------------Headers---------------");
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an object that comes back with details pertaining to the error that occurred.
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
+}
+
+
 
 
 
