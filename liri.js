@@ -125,7 +125,12 @@ function movieOMBD(entry){
             //plot of the movie
             console.log("Plot: " + movie.Plot)
             //Actors in the movie
-            console.log("Actors: " + movie.Actors)
+            console.log("Actors: " + movie.Actors) 
+            
+            if(entry === "Mr.Nobody"){
+            console.log("\n----------------------------------------------------------------------------------------------------------------")
+            console.log("\nIf you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/. \n\nIt's on Netflix!")
+        }
         })
     .catch(function(error) {
         if (error.response) {
@@ -146,7 +151,18 @@ function movieOMBD(entry){
           console.log("Error", error.message);
         }
         console.log(error.config);
+
+       
       });
+}
+
+function doThat(){
+    fs.readFile('random.txt', "utf8", function(error,data){
+        var text = data.split(',');
+
+        spotifySong(text[1])
+
+    })
 }
 
 
