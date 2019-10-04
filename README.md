@@ -13,11 +13,12 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
 2. Javascript
 3. Axios
 4. APIs
-5. Moment
+5. Moment.js
 
 ## npm packages:
 * spotify
 * dotenv
+* moment
 
 ## How to run LIRI
 
@@ -29,6 +30,9 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
    - Venue location
    - Date of the Event
 
+   ![concert-this](images/concert-this.JPG)
+
+
 * Step Two: node liri spotify-this-song <entry here>.
 
     This will show the following information about the song in your terminal/bash window:
@@ -38,9 +42,13 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
     - A preview link of the song from Spotify
     - The album that the song is from
 
+    ![spotify-this-song](images/spotify-this-song.JPG)
+
     If no song is provided then the program will default to "The Sign" by Ace of Base
 
-* Step Three: node liri.js movie-this <movie name here>.
+    ![spotify-this-song default](images/spotify-this-song-default.JPG)
+
+* Step Three: node liri.js movie-this <entry here>.
 
     This will output the following information to your terminal/bash window:
 
@@ -54,9 +62,17 @@ LIRI is a Language Interpretation and Recognition Interface. LIRI will be a comm
     - Rotten Tomatoes Rating.
     - Rotten Tomatoes URL.
 
+    ![movie-this](images/movie-this.JPG)
+
     If the user doesn't type a movie in, the program will output data for the movie 'Mr.Nobody.'
+
+    ![movie-this default](images/movie-this-default.JPG)
+
 
 * Step Four: node liri.js do-what-it-says
 
     This will output the command placed in random.txt file
+
+    ![do-what-it-says](images/do-what-it-says.JPG)
+
 
